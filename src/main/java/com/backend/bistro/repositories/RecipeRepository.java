@@ -6,4 +6,6 @@ import com.backend.bistro.entities.Recipe;
 
 public interface RecipeRepository extends CrudRepository<Recipe, Integer> {
 
+	public Iterable<Recipe> findByNameContainingIgnoreCase(String name);
+
 }
