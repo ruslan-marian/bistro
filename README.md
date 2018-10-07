@@ -47,3 +47,5 @@ The database can be explored from the H2 console:
 [Spring Initializr](https://start.spring.io/)  
 [Building a RESTful Web Service](http://spring.io/guides/gs/rest-service/#scratch)  
 [Spring Boot and H2 in memory database](http://www.springboottutorial.com/spring-boot-and-h2-in-memory-database)
+[Spring Boot Reference Guide](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-first-application-pom)
+
