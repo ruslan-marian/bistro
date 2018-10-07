@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,8 +30,19 @@ public class IngredientController {
 	}
 
 	@GetMapping
-	public Iterable<Ingredient> findAll() {
+	public Iterable<Ingredient> find(@RequestParam(value = "q", required = false) String name) {
+		if (name == null) {
+			return findAll();
+		}
+		return findByName(name);
+	}
+
+	private Iterable<Ingredient> findAll() {
 		return ingredientRepository.findAll();
+	}
+
+	private Iterable<Ingredient> findByName(String name) {
+		return ingredientRepository.findByNameContainingIgnoreCase(name);
 	}
 
 	@PostMapping
@@ -38,12 +50,11 @@ public class IngredientController {
 	public Ingredient create(@RequestBody Ingredient ingredient) {
 		return ingredientRepository.save(ingredient);
 	}
-	
+
 	@PutMapping("/{ingredient_id}")
-	public Ingredient update(@RequestBody Ingredient ingredient, @PathVariable("ingredient_id") Integer ingredientId){
+	public Ingredient update(@RequestBody Ingredient ingredient, @PathVariable("ingredient_id") Integer ingredientId) {
 		ingredientRepository.findById(ingredientId);
 		return ingredientRepository.save(ingredient);
 	}
-	
-	
+
 }
