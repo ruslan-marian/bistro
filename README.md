@@ -46,11 +46,16 @@ The database can be explored from the H2 console:
 
 The GET method can be tested in a browser. For instance, to get ingredient 1
 paste this `http://localhost:8080/api/ingredient/1` in the address bar.  
+
 Other methods, like POST and PUT can be tested using the
 [Postman](https://www.getpostman.com/) API testing tool.  
 For example, when trying POST with `http://localhost:8080/api/ingredient`,
 select the request **Body** type as "JSON (application/json)" and write the
 value using this format: `{"name"="red wine"}`.
+
+In a similar way, to POST a new recipe set a JSON body
+to `{"name": "The Portobello Grilled Steak", "people": 2}`. 
+
 
 
 ## References
