@@ -42,10 +42,21 @@ The database can be explored from the H2 console:
 
 
 
+## Testing
+
+The GET method can be tested in a browser. For instance, to get ingredient 1
+paste this `http://localhost:8080/api/ingredient/1` in the address bar.  
+Other methods, like POST and PUT can be tested using the
+[Postman](https://www.getpostman.com/) API testing tool.  
+For example, when trying POST with `http://localhost:8080/api/ingredient`,
+select the request **Body** type as "JSON (application/json)" and write the
+value using this format: `{"name"="red wine"}`.
+
+
 ## References
 
 [Spring Initializr](https://start.spring.io/)  
 [Building a RESTful Web Service](http://spring.io/guides/gs/rest-service/#scratch)  
-[Spring Boot and H2 in memory database](http://www.springboottutorial.com/spring-boot-and-h2-in-memory-database)
+[Spring Boot and H2 in memory database](http://www.springboottutorial.com/spring-boot-and-h2-in-memory-database)  
 [Spring Boot Reference Guide](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-first-application-pom)
 
