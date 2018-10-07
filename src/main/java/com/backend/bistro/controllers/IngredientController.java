@@ -27,7 +27,7 @@ public class IngredientController {
 		return ingredientRepository.findById(ingredientId);
 	}
 
-	@GetMapping("/")
+	@GetMapping
 	public Iterable<Ingredient> findAll() {
 		return ingredientRepository.findAll();
 	}
