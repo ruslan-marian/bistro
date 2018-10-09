@@ -1,5 +1,6 @@
 package com.backend.bistro.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,33 +25,73 @@ public class IngredientController {
 	@Autowired
 	IngredientRepository ingredientRepository;
 
+	/**
+	 * Returns ingredient name and id.
+	 * <p>
+	 * Endpoint: <b>GET: /api/ingredient/{ingredient_id}</b>
+	 * 
+	 * @param ingredientId
+	 *            the id of the ingredient
+	 * @return the ingredient with the given id
+	 */
 	@GetMapping("/{ingredient_id}")
 	public Optional<Ingredient> findById(@PathVariable("ingredient_id") Integer ingredientId) {
 		return ingredientRepository.findById(ingredientId);
 	}
 
+	/**
+	 * Returns ingredient(s) by the given {@code name}. <br>
+	 * If {@code name} is omitted then all existing ingredients are returned.
+	 * <p>
+	 * Endpoint: <b>GET: /api/ingredient</b>
+	 * Endpoint: <b>GET: /api/ingredient?q={search_string}</b>
+	 * 
+	 * @param name
+	 *            optional parameter
+	 * @return the matching ingredients
+	 */
 	@GetMapping
-	public Iterable<Ingredient> find(@RequestParam(value = "q", required = false) String name) {
+	public List<Ingredient> find(@RequestParam(value = "q", required = false) String name) {
 		if (name == null) {
 			return findAll();
 		}
 		return findByName(name);
 	}
 
-	private Iterable<Ingredient> findAll() {
+	private List<Ingredient> findAll() {
 		return ingredientRepository.findAll();
 	}
 
-	private Iterable<Ingredient> findByName(String name) {
+	private List<Ingredient> findByName(String name) {
 		return ingredientRepository.findByNameContainingIgnoreCase(name);
 	}
 
+	/**
+	 * Creates a new ingredient.
+	 * <p>
+	 * Endpoint: <b>POST: /api/ingredient</b>
+	 * 
+	 * @param ingredient
+	 *            the new ingredient
+	 * @return the created ingredient with the new id
+	 */
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Ingredient create(@RequestBody Ingredient ingredient) {
 		return ingredientRepository.save(ingredient);
 	}
 
+	/**
+	 * Changes the name of an existing ingredient.
+	 * <p>
+	 * Endpoint: <b>PUT: /api/ingredient/{ingredient_id}</b>
+	 * 
+	 * @param recipe
+	 *            the ingredient to be updated
+	 * @param ingredientId
+	 *            the id of the ingredient to be updated
+	 * @return the saved ingredient
+	 */
 	@PutMapping("/{ingredient_id}")
 	public Ingredient update(@RequestBody Ingredient ingredient, @PathVariable("ingredient_id") Integer ingredientId) {
 		ingredientRepository.findById(ingredientId);

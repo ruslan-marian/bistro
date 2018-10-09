@@ -63,5 +63,6 @@ to `{"name": "The Portobello Grilled Steak", "people": 2}`.
 [Spring Initializr](https://start.spring.io/)  
 [Building a RESTful Web Service](http://spring.io/guides/gs/rest-service/#scratch)  
 [Spring Boot and H2 in memory database](http://www.springboottutorial.com/spring-boot-and-h2-in-memory-database)  
-[Spring Boot Reference Guide](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-first-application-pom)
+[Spring Boot Reference Guide](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-first-application-pom)  
+[Mapping ManyToMany association table with an extra column](https://stackoverflow.com/questions/5127129/mapping-many-to-many-association-table-with-extra-columns)
 
